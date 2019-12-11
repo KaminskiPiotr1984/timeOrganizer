@@ -5,19 +5,21 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "random")
 @Getter
 @Setter
-
+@ToString
 @EqualsAndHashCode(of = "id")
-public class Posts {
+public class RandomData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,15 +29,10 @@ public class Posts {
     @Size(max = 250)
     private String description;
 
-    @Column(nullable = false)
-    @CreationTimestamp
-    private Timestamp startTime;
-
-    @Column(nullable = false)
-    @CreationTimestamp
-    private Timestamp endTime;
 
     @Column
     private Boolean repeating = Boolean.FALSE;
+
+
 
 }
