@@ -37,8 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // Security nie sprawdza żadnego elementu z katalogu media (gdzie trzymane są zdjęcia)
         web.ignoring()
                 .antMatchers("/media/**")           // Spring Security nie działa na media (w katalog media wrzucamy zdjęcia)
-                .antMatchers("/webjars/**");        // odblokwanie przeglądarki do dostępu do webjars (gdzie
-        //      są css) - Spring Security jest wyłączane
+                .antMatchers("/webjars/**")        // odblokwanie przeglądarki do dostępu do webjars (gdzie
+                .antMatchers("/h2-console", "/h2-console/**");                                                //      są css) - Spring Security jest wyłączane
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
