@@ -30,6 +30,4 @@ public class EventDTO {
     private Boolean repeating = Boolean.FALSE;
 
 
-
-
 }

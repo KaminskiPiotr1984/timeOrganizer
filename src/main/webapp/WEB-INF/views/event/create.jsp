@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="set" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="Time" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
@@ -27,21 +28,28 @@
 
 
 <form:form method="post" modelAttribute="event">
-    <p>
-        Description: <form:textarea path="description"/><form:errors path="description"/>
-    </p>
-    <p>
-        Start Time:Time: <form:input path="startTime" type="datetime-local"/><form:errors path="startTime"/>
-    </p>
-    <p>
-        End Time: <form:input path="endTime" type="datetime-local"/><form:errors path="endTime"/>
-    </p>
-    <p>
-        Repeating: <form:checkbox path="repeating"/><form:errors path="repeating"/>
-    </p>
-    <p>
-        <input type="submit" value="Ok">
-    </p>
+    <sec:authorize access="isAuthenticated()">
+        <p>
+            Description: <form:textarea path="description"/><form:errors path="description"/>
+        </p>
+        <p>
+            Start Time:Time: <form:input path="startTime" type="datetime-local"/><form:errors path="startTime"/>
+        </p>
+        <p>
+            End Time: <form:input path="endTime" type="datetime-local"/><form:errors path="endTime"/>
+        </p>
+        <p>
+            Repeating: <form:checkbox path="repeating"/><form:errors path="repeating"/>
+        </p>
+        <p>
+                ${pageContext.request.userPrincipal.name}
+        </p>
+
+        <p>
+            <input type="submit" value="Ok">
+        </p>
+        <set:csrfInput/>
+    </sec:authorize>
 </form:form>
 
 

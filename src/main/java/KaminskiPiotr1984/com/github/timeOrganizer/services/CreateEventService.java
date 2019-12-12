@@ -4,5 +4,5 @@ import KaminskiPiotr1984.com.github.timeOrganizer.dtos.EventDTO;
 
 public interface CreateEventService {
 
-    void createIvent(EventDTO ivent);
+    void createEvent(EventDTO event);
 }

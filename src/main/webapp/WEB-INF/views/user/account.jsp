@@ -1,4 +1,4 @@
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="set" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: piotr
@@ -22,6 +22,7 @@
             </h2>
         </div>
     </div>
+    <set:csrfInput/>
 </section>
 
 <%@ include file="/WEB-INF/views/footer.jsp" %>

@@ -25,5 +25,8 @@ public class Event {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private Boolean repeating = Boolean.FALSE;
+    @ManyToOne
+    private User user;
+
 
 }
