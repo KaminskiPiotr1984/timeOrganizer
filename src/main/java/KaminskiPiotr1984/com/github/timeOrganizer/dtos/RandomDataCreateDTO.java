@@ -10,17 +10,16 @@ import javax.validation.constraints.Size;
 public class RandomDataCreateDTO {
 
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-
-        @Column
-        @Size(max = 250)
-        private String description;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
 
-        @Column
-        private Boolean repeating = Boolean.FALSE;
+    @Size(max = 250)
+    private String description;
 
 
-    }
+    private Boolean repeating = Boolean.FALSE;
+
+    private Long user_id;
+}

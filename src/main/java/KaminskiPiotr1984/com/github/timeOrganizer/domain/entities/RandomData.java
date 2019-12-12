@@ -33,6 +33,9 @@ public class RandomData {
     @Column
     private Boolean repeating = Boolean.FALSE;
 
+    @ManyToOne
+    private User user;
+
 
 
 }

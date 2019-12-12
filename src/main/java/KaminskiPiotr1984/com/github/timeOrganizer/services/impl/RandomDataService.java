@@ -25,6 +25,7 @@ public class RandomDataService implements CreateRandomDataService {
    public void createRandomData(RandomDataCreateDTO randomDataCreate) {
     ModelMapper mapper = new ModelMapper();
     RandomData randomData = mapper.map(randomDataCreate, RandomData.class);
+
     randomRepository.save(randomData);
 }
 
