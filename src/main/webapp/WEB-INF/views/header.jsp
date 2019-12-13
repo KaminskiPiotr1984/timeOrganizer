@@ -43,9 +43,11 @@
                         <a class="navbar-link">More actions</a>
                         <div class="navbar-dropdown">
                             <a class="navbar-item" href="/event/create">Create new Event</a>
-                            <a class="navbar-item">Empty link 2</a>
+                            <sec:authorize access="isAuthenticated()">
+                            <a class="navbar-item" href="/event/userEvents">My event's</a>
                             <a class="navbar-item">Empty link 3</a>
                             <a class="navbar-item">Empty link 4</a>
+                            </sec:authorize>
                         </div>
                     </div>
                 </div>

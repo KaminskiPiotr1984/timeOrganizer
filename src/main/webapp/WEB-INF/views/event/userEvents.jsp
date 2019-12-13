@@ -33,7 +33,11 @@
         }
     </style>
 </head>
+
+<%@ include file="/WEB-INF/views/header.jsp" %>
+
 <body>
+
 
 <table class="zui-table">
     <thead>
@@ -63,6 +67,9 @@
     </c:forEach>
     </tbody>
 </table>
-<p>Sztywne dane</p>
+
 </body>
+
+<%@ include file="/WEB-INF/views/footer.jsp" %>
+
 </html>

@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDateTime;
+
+import static org.apache.commons.lang3.BooleanUtils.and;
 
 @Controller
 @RequestMapping("/event")
@@ -34,7 +39,6 @@ public class EventsController {
     }
 
 
-
     @GetMapping("/create")
     public String prepareAddUser(Model model) {
         model.addAttribute("event", new EventDTO());
@@ -46,21 +50,26 @@ public class EventsController {
         if (result.hasErrors()) {
             return "event/create";
         }
+
         ModelMapper mapper = new ModelMapper();
         Event eventEntity = mapper.map(eventDTO, Event.class);
         User user = userRepository.getByUsername(principal.getName());
-        eventEntity.setUser(user);
-        eventsRepository.save(eventEntity);
+       if (eventDTO.getStartTime().isAfter(eventsRepository.findAllByUserUsername(principal.getName()).get(eventsRepository.countAllByUserUsername(principal.getName())-1).getStartTime())) {
+            eventEntity.setUser(user);
+            eventsRepository.save(eventEntity);
+        }
         return "redirect:/user";
     }
 
     @GetMapping("/userEvents")
-    public String showAllUserEvents(Model model){
-        model.addAttribute("events", eventsRepository.findAll());
+    public String showAllUserEvents(Model model, Principal principal) {
+        model.addAttribute("events", eventsRepository.findAllByUserUsername(principal.getName()));
+
         return "event/userEvents";
     }
 
 
-
-
 }
+
+//    Event eventST = new Event();
+//            eventsRepository.Międzyczas(eventST.getStartTime(), eventST.getEndTime());
